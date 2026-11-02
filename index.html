@@ -3,7 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>GirlsGo | Conteúdo exclusivo</title>
+    <meta
+      name="description"
+      content="GirlsGo — acesso rápido a conteúdo exclusivo. Abra girlsgo.blog e continue a experiência."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="rating" content="adult" />
+    <meta name="theme-color" content="#4aa3c8" />
+    <link rel="canonical" href="https://girlsgo.blog/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://girlsgo.blog/" />
+    <link rel="alternate" hreflang="x-default" href="https://girlsgo.blog/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="GirlsGo" />
+    <meta property="og:url" content="https://girlsgo.blog/" />
+    <meta property="og:title" content="GirlsGo | Conteúdo exclusivo" />
+    <meta
+      property="og:description"
+      content="GirlsGo — acesso rápido a conteúdo exclusivo."
+    />
+    <meta property="og:image" content="https://girlsgo.blog/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GirlsGo | Conteúdo exclusivo" />
+    <meta
+      name="twitter:description"
+      content="GirlsGo — acesso rápido a conteúdo exclusivo."
+    />
+    <meta name="twitter:image" content="https://girlsgo.blog/og.png" />
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://connect.facebook.net" />
+    <link rel="dns-prefetch" href="https://www.facebook.com" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "GirlsGo",
+        "url": "https://girlsgo.blog/",
+        "inLanguage": "pt-BR",
+        "description": "GirlsGo — acesso rápido a conteúdo exclusivo.",
+        "potentialAction": {
+          "@type": "ViewAction",
+          "target": "https://girlsgo.blog/"
+        }
+      }
+    </script>
+
     <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -65,6 +116,33 @@
         background: linear-gradient(180deg, #4aa3c8 0%, #8ec8de 48%, #e4f3f8 100%);
       }
 
+      .brand {
+        position: absolute;
+        left: 50%;
+        top: 18%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.92);
+        text-shadow: 0 2px 18px rgba(20, 60, 90, 0.25);
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .brand h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2.4rem, 7vw, 4.2rem);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 1;
+      }
+
+      .brand p {
+        margin-top: 0.7rem;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+        opacity: 0.88;
+      }
+
       .flight {
         position: absolute;
         top: 42%;
@@ -124,11 +202,15 @@
         alt=""
       />
     </noscript>
-    <div class="sky">
-      <div class="flight">
+    <main class="sky">
+      <header class="brand">
+        <h1>GirlsGo</h1>
+        <p>Conteúdo exclusivo. Em breve você continua.</p>
+      </header>
+      <div class="flight" aria-hidden="true">
         <div class="craft">
           <div class="trail"></div>
-          <svg class="plane" viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="plane" viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg">
             <path d="M78 74 L168 78 L210 104 L186 104 L132 82 Z" fill="#c5d3df" />
             <ellipse cx="176" cy="96" rx="22" ry="9" fill="#9aadb9" />
             <ellipse cx="176" cy="96" rx="8" ry="5" fill="#7e929f" />
@@ -167,12 +249,24 @@
           </svg>
         </div>
       </div>
-    </div>
+    </main>
     <script>
       const destino =
         "https://www.xvideos.com/video.olholhpa9c8/macho_me_comeu_gostoso";
 
+      function registrarSaida() {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "outbound_redirect",
+          destination: destino,
+        });
+        if (typeof fbq === "function") {
+          fbq("trackCustom", "OutboundRedirect", { destination: destino });
+        }
+      }
+
       document.querySelector(".flight").addEventListener("animationend", () => {
+        registrarSaida();
         window.location.replace(destino);
       });
     </script>
